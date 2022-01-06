@@ -1,0 +1,141 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body, html { 
+    background-color: #213241;
+}
+
+button {
+    font-family: 'Lato', cursive;
+    width: 68px;
+    height: 70px;
+    border: none;
+    background: #2e3749;
+    color: white;
+    border-collapse: collapse;
+    font-size: 1.5rem;
+}
+
+button:hover {
+    background-color: #232936;
+    color: white;
+    cursor: pointer;
+}
+
+.activebutton {
+    color: blue;
+}
+
+.operators {
+    display: flex;
+    flex-direction: column;
+}
+
+
+.calcequals {
+    background-color: #099e9c;
+    border-bottom-right-radius: 15px;
+}
+
+.calcequals:hover {
+    background-color: #06817f;
+}
+.calcoperator {
+    background-color: #284a52;
+    color: #1cb9b7;
+    font-size: 1.4rem;
+    margin-bottom: -1px;
+    font-weight: 700;
+
+}
+
+.calcclear, .calcback, .calcposneg, .calcexp {
+    background-color: #2e3749;
+    color: #1cb9b7;
+    font-size: 1.4rem;
+}
+
+.calcclear:hover, .calcback:hover, .calcposneg:hover, .calcexp:hover {
+    background-color: #232936;
+    color: #1cb9b7;
+}
+
+.display {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    max-width: 272px;
+    padding: 0 10px;
+    overflow: auto;
+    background: none;
+    font-family: 'Source Sans Pro', sans-serif;
+    box-shadow:rgba(10, 37, 64, 0.35) 0px 0px 6px 0px inset;
+    border-bottom: 1px solid #1cb9b7;
+}
+
+.displaytop {
+    display: flex;
+    align-items: flex-end;
+    box-sizing: border-box;
+    width: 100%;
+    padding: 10px 10px 0 10px;
+    justify-content: flex-end;
+    height: 60px;
+    font-size: 1.2rem;
+    color: white;
+}
+
+
+
+#displayside {
+    margin-left: 5px;
+}
+
+#displaymain {
+    font-size: 60px;
+    height: 80px;
+    display: block;
+}
+
+.operators button {
+    height: 71px;
+}
+
+.displaybottom {
+    font-size: 2.1rem;
+    text-align: right;
+    padding: 0 10px 10px 10px;
+    box-sizing: border-box;
+    width: 100%;
+    color: #1cb9b7;
+    text-overflow: ellipsis;
+    max-width:inherit;
+}
+.buttons {
+    margin: 0;
+}
+
+.buttons {
+    font-size: 0;
+}
+
+.container {
+    background: #2e3749;
+    display: inline-block;
+    margin: 0 auto;
+    border-radius: 25px;
+    position: absolute;
+    width: 272px;
+    top: 50%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
+    box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+}
+
+.buttonsarea {
+    margin-bottom: 30px;
+    display: flex;
+}
