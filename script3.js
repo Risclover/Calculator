@@ -197,7 +197,7 @@ function switchSign() {
 
 // For the decimal button
 function decimal() {
-    if (mainDisplay.textContent.includes(".") && justEqualled || justEqualled) {
+    if (mainDisplay.textContent.includes(".") && justEqualled === true || justEqualled === true) {
         mainDisplay.textContent = '';
         mainDisplay.textContent += '0.'
         decimalP = true;
@@ -209,9 +209,7 @@ function decimal() {
     if (decimalP != true) {
         // If there's nothing in the main display, 
         if (mainDisplay.innerHTML === '' || mainDisplay.textContent == 0) {
-            mainDisplay.textContent = '';
-            mainDisplay.textContent += 0;
-            mainDisplay.textContent += '.';
+            mainDisplay.textContent += 0.;
         } else {
             mainDisplay.textContent += '.';
         }
