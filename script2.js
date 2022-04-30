@@ -1,14 +1,10 @@
 let operand1 = '' 
 let operand2 = ''
 let currentOperation = null; 
-// Resets the display screen (but not the whole )
 let resetScrn = false;
-// True = positive sign, false = negative sign
 let sign = true; 
-// Acts as a "Did you already press the decimal key?" variable
 let decimalP = false;
 let calculated = false;
-// Acts as a "Did you just press the equals key?" variable 
 let justEqualled = false; 
 
 const numberBtns = document.querySelectorAll('.calcnumber');
@@ -30,45 +26,39 @@ deleteBtn.addEventListener('click', backSpace);
 signSwitch.addEventListener('click', switchSign);
 decimalPoint.addEventListener('click', decimal);
 
-// When a number button is pressed, the dis() function runs. dis() controls the displays and helps everything be appended to the display correctly.
 numberBtns.forEach(button => {
 	button.addEventListener('click', (e) => dis(e.target.value));
 });
 
-// When an operator button (+ - * /) is pressed, the setOperation() function runs. setOperation() tells the program what kind of operation is currently being computed.
 operatorBtns.forEach(operatorBtn => {
     operatorBtn.addEventListener('click', (e) => setOperation(e.target.value));
 }); 
 
-// Tells the program what kind of operation is being computed (+ - * /)
 function setOperation(operator) {
-    if (currentOperation !== null) evaluate() // If currentOperation isn't null, go ahead and evaluate.
-    operand1 = mainDisplay.textContent; // operand1 = the number in the main display
-    currentOperation = operator; // the current operation is the operator (taken from which operator button was last pressed)
-    sideDisplay.textContent = currentOperation; // Updates the "side display" with the current operation;
-    smallDisplay.textContent = operand1; /* Updates the small display with what was originally in the main display, via the operand1 variable acting as a middleman */
-    resetScrn = true; // Yes, the screen needs to reset
+    if (currentOperation !== null) evaluate() 
+    operand1 = mainDisplay.textContent;
+    currentOperation = operator;
+    sideDisplay.textContent = currentOperation; 
+    smallDisplay.textContent = operand1; 
+    resetScrn = true;
     reset();
-    decimalP = false; // decimalP is false now
+    decimalP = false;
 }
 
-// Just a quick little detour that adds whether or not the equals button has just been pressed
 function equals() {
     justEqualled = true;
     evaluate();
 }
 
-// Rounds the number so that there aren't a million decimal places (i.e., 13.2 instead of 13.1900001)
 function roundNumber(number) {
     return Math.round(number * 1000) / 1000;
 }
 
-// Evaluates. 
 function evaluate() {
     calculated = true;
-    if(currentOperation === null || resetScrn) // If the current operation isn't set or resetScrn is true, do nothing
+    if(currentOperation === null || resetScrn) 
         return
-    if (currentOperation === '/' && mainDisplay.textContent == 0) { // If the user tries to divide by 0, alerts "nonono". (Changing this later; just a placeholder, really)
+    if (currentOperation === '/' && mainDisplay.textContent == 0) { 
         alert('Nonono');
         return
     }
@@ -148,18 +138,17 @@ function backSpace() {
     }
 }
 
-// Specifies which operation to run depending on the current operator. Pretty self-explanatory.
 function operate (operator, a, b) {
     a = Number(a);
     b = Number(b);
     switch(operator) {
         case '+':
             return add(a, b);
-        case '-':
+        case '−':
             return subtract(a,b);
-        case '*':
+        case '×':
             return multiply(a,b);
-        case '/':
+        case '÷':
             return divide(a, b);
         case '^':
             return exponent(a, b);
@@ -168,7 +157,6 @@ function operate (operator, a, b) {
     }
 }
 
-// Specifies how to add, subtract, multiply, and divide
 function add (a, b) {
     return a + b;
 }
@@ -189,8 +177,7 @@ function exponent (a, b) {
     return a**b;
 }
 
-/* For the +/- button; switches the sign and makes sure that it remains a number 
-(because I was getting NaN for some reason at some point) */
+
 function switchSign() {
     mainDisplay.textContent = Number(mainDisplay.textContent) * -1;
 }
@@ -256,11 +243,11 @@ document.addEventListener('keydown', function (event) {
     } else if (event.key === '+') {
         setOperation('+');
     } else if (event.key === '-') {
-        setOperation('-');
+        setOperation('−');
     } else if (event.key === '*') {
-        setOperation('*');
+        setOperation('×');
     } else if (event.key === '/') {
-        setOperation('/');
+        setOperation('÷');
     } else if (event.key === 'Enter') {
         equals();
     } else if (event.key === '.') {
